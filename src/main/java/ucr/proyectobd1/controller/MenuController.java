@@ -22,6 +22,20 @@ public class MenuController implements Initializable {
     @FXML
     private Button btnCustomers;
     @FXML
+    private Button btnCommercialCategory;
+    @FXML
+    private Button btnService;
+    @FXML
+    private Button btnPackage;
+    @FXML
+    private Button btnCustomerPhone;
+    @FXML
+    private Button btnInvoiceConcept;
+    @FXML
+    private Button btnPoints;
+    @FXML
+    private Button btnQueries;
+    @FXML
     private ImageView imageviewLogo;
 
     @Override
@@ -43,6 +57,34 @@ public class MenuController implements Initializable {
 
         btnCustomers.setOnAction(actionEvent -> {
             openWindow("/ucr/proyectobd1/customers.fxml", actionEvent);
+        });
+
+        btnCommercialCategory.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/commercial-category.fxml", actionEvent);
+        });
+
+        btnService.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/service.fxml", actionEvent);
+        });
+
+        btnPackage.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/package.fxml", actionEvent);
+        });
+
+        btnCustomerPhone.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/customer-phone.fxml", actionEvent);
+        });
+
+        btnInvoiceConcept.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/invoice-concept.fxml", actionEvent);
+        });
+
+        btnPoints.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/points.fxml", actionEvent);
+        });
+
+        btnQueries.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/queries.fxml", actionEvent);
         });
     }
 

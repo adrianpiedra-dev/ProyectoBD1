@@ -1,0 +1,302 @@
+================================================================================
+                    GUÍA DE USO DE LOS MÓDULOS IMPLEMENTADOS
+================================================================================
+
+Este documento proporciona una guía completa para utilizar cada módulo 
+implementado en el sistema.
+
+================================================================================
+                    1. CATEGORÍAS COMERCIALES
+================================================================================
+
+ACCESO:
+  1. Desde el menú principal, haz clic en "Cat. Comerciales"
+  2. Se abrirá la vista de Categorías Comerciales
+
+OPERACIONES:
+
+Crear nueva categoría:
+  1. Haz clic en "Nuevo"
+  2. Ingresa el código (máx 20 caracteres)
+  3. Ingresa la descripción (máx 255 caracteres)
+  4. Ingresa la velocidad en Mbps (número positivo)
+  5. Haz clic en "Guardar"
+
+Modificar categoría:
+  1. Selecciona la categoría en la tabla o ingresa el código en el campo
+  2. Haz clic en "Buscar" o haz clic en la fila de la tabla
+  3. Haz clic en "Modificar"
+  4. Edita los datos (el código no se puede modificar)
+  5. Haz clic en "Guardar"
+
+Eliminar categoría:
+  1. Selecciona la categoría en la tabla
+  2. Haz clic en "Eliminar"
+  3. Confirma en el diálogo de alerta
+
+Buscar categoría:
+  1. Ingresa el código en el campo de búsqueda
+  2. Haz clic en "Buscar"
+  3. Los datos se cargarán en los campos
+
+Limpiar formulario:
+  1. Haz clic en "Limpiar"
+  2. Todos los campos se vaciarán
+
+================================================================================
+                    2. SERVICIOS
+================================================================================
+
+ACCESO:
+  1. Desde el menú principal, haz clic en "Servicios"
+
+OPERACIONES:
+
+Crear nuevo servicio:
+  1. Haz clic en "Nuevo"
+  2. Ingresa el código del servicio
+  3. Ingresa el nombre
+  4. Ingresa la descripción
+  5. Ingresa el costo mensual
+  6. IMPORTANTE: Selecciona la categoría comercial desde el ComboBox
+     (No escribas el código manualmente)
+  7. Haz clic en "Guardar"
+
+Modificar servicio:
+  1. Selecciona el servicio de la tabla o busca por código
+  2. Haz clic en "Buscar"
+  3. Haz clic en "Modificar"
+  4. Edita los datos
+  5. Haz clic en "Guardar"
+
+Eliminar servicio:
+  1. Selecciona el servicio en la tabla
+  2. Haz clic en "Eliminar"
+  3. Confirma la eliminación
+
+================================================================================
+                    3. PAQUETES
+================================================================================
+
+ACCESO:
+  1. Desde el menú principal, haz clic en "Paquetes"
+
+OPERACIONES:
+
+Crear nuevo paquete:
+  1. Haz clic en "Nuevo"
+  2. Ingresa el código
+  3. Ingresa el nombre
+  4. Ingresa la vigencia en días (número positivo)
+  5. Ingresa el precio
+  6. Ingresa la cantidad (número positivo)
+  7. Haz clic en "Guardar"
+
+Búsqueda:
+  1. Ingresa el código en el campo de búsqueda
+  2. Haz clic en "Buscar"
+
+================================================================================
+                    4. TELÉFONOS DE CLIENTES
+================================================================================
+
+ACCESO:
+  1. Desde el menú principal, haz clic en "Tel. Clientes"
+
+OPERACIONES:
+
+Agregar teléfono a cliente:
+  1. Selecciona el cliente del ComboBox
+     (El ComboBox muestra automáticamente los clientes registrados)
+  2. Ingresa el número de teléfono
+  3. Haz clic en "Guardar"
+
+Ver teléfonos de un cliente:
+  1. Selecciona el cliente del ComboBox
+  2. La tabla se actualiza automáticamente mostrando sus teléfonos
+  3. O haz clic en "Buscar"
+
+Eliminar teléfono:
+  1. Selecciona el teléfono de la tabla
+  2. Haz clic en "Eliminar"
+  3. Confirma la eliminación
+
+NOTA: Un cliente puede tener múltiples teléfonos registrados.
+
+================================================================================
+                    5. CONCEPTOS DE FACTURA
+================================================================================
+
+ACCESO:
+  1. Desde el menú principal, haz clic en "Conceptos Fact."
+
+OPERACIONES:
+
+Agregar concepto a factura:
+  1. Selecciona la factura del ComboBox
+  2. Ingresa la descripción del concepto
+  3. Ingresa el monto
+  4. Haz clic en "Guardar"
+
+Ver conceptos de una factura:
+  1. Selecciona la factura del ComboBox
+  2. La tabla se actualiza mostrando los conceptos
+
+Eliminar concepto:
+  1. Selecciona el concepto de la tabla
+  2. Haz clic en "Eliminar"
+  3. Confirma
+
+NOTA: Cada factura puede tener varios conceptos de pago/servicio.
+
+================================================================================
+                    6. PUNTOS
+================================================================================
+
+ACCESO:
+  1. Desde el menú principal, haz clic en "Puntos"
+
+OPERACIONES:
+
+Registrar puntos para línea móvil:
+  1. Selecciona la línea móvil del ComboBox
+  2. Selecciona la fecha con el DatePicker
+  3. Ingresa la cantidad de puntos
+  4. Ingresa el saldo actual
+  5. Haz clic en "Guardar"
+
+Ver puntos de una línea:
+  1. Selecciona la línea móvil del ComboBox
+  2. La tabla se actualiza mostrando el histórico de puntos
+
+Buscar puntos:
+  1. Selecciona la línea móvil
+  2. Haz clic en "Buscar"
+
+Eliminar registro de puntos:
+  1. Selecciona el registro de la tabla
+  2. Haz clic en "Eliminar"
+
+NOTA: Los puntos se ordenan por fecha descendente (más recientes primero).
+
+================================================================================
+                    7. CONSULTAS SQL
+================================================================================
+
+ACCESO:
+  1. Desde el menú principal, haz clic en "Consultas SQL"
+
+CONSULTAS DISPONIBLES:
+
+1. Total facturado por cliente (SUM)
+   Descripción: Muestra el monto total facturado a cada cliente
+   Resultado: Tabla con ID Cliente, Nombre, Apellidos, Total Facturado
+   Ordenamiento: Por total facturado descendente
+   
+2. Cliente y Teléfono (UPPER y CONCAT)
+   Descripción: Muestra nombre completo del cliente en mayúsculas con su teléfono
+   Resultado: Formato "JUAN PÉREZ GARCÍA - 88881234"
+   Ordenamiento: Por nombre cliente ascendente
+   
+3. Auditoría de Creación
+   Descripción: Información de auditoría de registro de clientes
+   Resultado: Usuario de creación, fecha de creación, estado
+   Ordenamiento: Por fecha descendente (más recientes primero)
+
+CÓMO ejecutar consultas:
+  1. Selecciona una consulta del ComboBox
+  2. Haz clic en "Ejecutar"
+  3. Los resultados se mostrarán en la tabla
+
+================================================================================
+                        MENSAJES DE ERROR COMUNES
+================================================================================
+
+"Campos requeridos"
+  → Significa que falta llenar uno o más campos obligatorios
+  → Asegúrate de llenar todos los campos antes de guardar
+
+"No puede ingresar un valor negativo"
+  → El campo rechaza números negativos
+  → Ingresa un valor positivo
+
+"Texto demasiado largo"
+  → El texto excede el máximo de caracteres permitido
+  → Reduce el tamaño del texto
+
+"La categoría ya existe"
+  → Ya hay una categoría con ese código
+  → Usa un código diferente
+
+"Cuidado: Este registro está relacionado con otras tablas"
+  → Al eliminar, se muestra una advertencia
+  → Confirma si deseas proceder
+
+"No se puede eliminar este registro porque está relacionado"
+  → SQL Server rechaza la eliminación por integridad referencial
+  → Primero elimina los registros que dependen de este
+
+"Debe seleccionar un cliente/factura/línea móvil"
+  → Se requiere seleccionar un valor del ComboBox
+  → No se puede escribir manualmente
+
+================================================================================
+                        RECOMENDACIONES DE USO
+================================================================================
+
+1. Validaciones:
+   • Los datos se validan ANTES de enviarlos a la BD
+   • Los errores se muestran en Alerts claros
+   • Lee los mensajes de error para saber qué corregir
+
+2. Integridad de datos:
+   • Las claves foráneas se seleccionan desde ComboBox
+   • Esto previene errores de datos inválidos
+   • No es posible escribir manualmente IDs que no existan
+
+3. Seguridad:
+   • Se utilizan PreparedStatements (previene inyección SQL)
+   • Las contraseñas están protegidas en la BD
+   • No se muestran datos sensibles innecesariamente
+
+4. Búsqueda:
+   • Ingresa datos exactos para buscar
+   • Algunos módulos buscan por ComboBox automáticamente
+   • Otros tienen campo de búsqueda manual
+
+5. Eliminación:
+   • Siempre se pide confirmación
+   • Se muestra advertencia si hay relaciones
+   • Una vez eliminado, no se puede recuperar
+
+================================================================================
+                        ATAJO RÁPIDO: FLUJO TÍPICO
+================================================================================
+
+CREAR UN SERVICIO:
+  1. Menú → "Servicios"
+  2. Botón "Nuevo"
+  3. Ingresa código de servicio
+  4. Ingresa nombre
+  5. Ingresa descripción
+  6. Ingresa costo mensual
+  7. Selecciona categoría comercial
+  8. Botón "Guardar"
+  9. Confirma en el Alert
+
+AGREGAR TELÉFONO A CLIENTE:
+  1. Menú → "Tel. Clientes"
+  2. Selecciona cliente en ComboBox
+  3. Ingresa teléfono
+  4. Botón "Guardar"
+  5. Confirma
+
+VER CONSULTAS:
+  1. Menú → "Consultas SQL"
+  2. Selecciona consulta en ComboBox
+  3. Botón "Ejecutar"
+  4. Resultados se muestran en tabla
+
+================================================================================
+                              FIN DEL DOCUMENTO
+================================================================================

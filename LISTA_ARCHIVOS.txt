@@ -1,0 +1,314 @@
+================================================================================
+                        LISTA COMPLETA DE ARCHIVOS
+                     MÓDULOS DESARROLLADOS - JUAN DIEGO
+================================================================================
+
+ARCHIVOS JAVA CREADOS (23 archivos):
+
+MODELOS:
+  ✓ src/main/java/ucr/proyectobd1/model/CommercialCategory.java
+  ✓ src/main/java/ucr/proyectobd1/model/Service.java
+  ✓ src/main/java/ucr/proyectobd1/model/Package.java
+  ✓ src/main/java/ucr/proyectobd1/model/CustomerPhone.java
+  ✓ src/main/java/ucr/proyectobd1/model/InvoiceConcept.java
+  ✓ src/main/java/ucr/proyectobd1/model/Points.java
+  ✓ src/main/java/ucr/proyectobd1/model/QueryResult.java
+
+DAOs (Data Access Objects):
+  ✓ src/main/java/ucr/proyectobd1/data/CommercialCategoryDAO.java
+  ✓ src/main/java/ucr/proyectobd1/data/ServiceDAO.java
+  ✓ src/main/java/ucr/proyectobd1/data/PackageDAO.java
+  ✓ src/main/java/ucr/proyectobd1/data/CustomerPhoneDAO.java
+  ✓ src/main/java/ucr/proyectobd1/data/InvoiceConceptDAO.java
+  ✓ src/main/java/ucr/proyectobd1/data/PointsDAO.java
+  ✓ src/main/java/ucr/proyectobd1/data/QueriesDAO.java
+
+CONTROLADORES:
+  ✓ src/main/java/ucr/proyectobd1/controller/CommercialCategoryController.java
+  ✓ src/main/java/ucr/proyectobd1/controller/ServiceController.java
+  ✓ src/main/java/ucr/proyectobd1/controller/PackageController.java
+  ✓ src/main/java/ucr/proyectobd1/controller/CustomerPhoneController.java
+  ✓ src/main/java/ucr/proyectobd1/controller/InvoiceConceptController.java
+  ✓ src/main/java/ucr/proyectobd1/controller/PointsController.java
+  ✓ src/main/java/ucr/proyectobd1/controller/QueriesController.java
+
+ARCHIVOS FXML CREADOS (8 archivos):
+  ✓ src/main/resources/ucr/proyectobd1/commercial-category.fxml
+  ✓ src/main/resources/ucr/proyectobd1/service.fxml
+  ✓ src/main/resources/ucr/proyectobd1/package.fxml
+  ✓ src/main/resources/ucr/proyectobd1/customer-phone.fxml
+  ✓ src/main/resources/ucr/proyectobd1/invoice-concept.fxml
+  ✓ src/main/resources/ucr/proyectobd1/points.fxml
+  ✓ src/main/resources/ucr/proyectobd1/queries.fxml
+
+ARCHIVOS MODIFICADOS (2 archivos):
+  ✓ src/main/java/ucr/proyectobd1/controller/MenuController.java
+  ✓ src/main/resources/ucr/proyectobd1/hello-view.fxml
+
+DOCUMENTACIÓN (3 archivos):
+  ✓ DESARROLLO_JUAN_DIEGO.txt
+  ✓ GUIA_DE_USO.txt
+  ✓ RESUMEN_IMPLEMENTACION.txt
+  ✓ LISTA_ARCHIVOS.txt (este archivo)
+
+================================================================================
+                        DETALLES POR MÓDULO
+================================================================================
+
+1. CATEGORÍA COMERCIAL
+   Model:      CommercialCategory.java
+   DAO:        CommercialCategoryDAO.java
+   Controller: CommercialCategoryController.java
+   View:       commercial-category.fxml
+   Métodos DAO: insertCommercialCategory, updateCommercialCategory,
+                deleteCommercialCategory, searchCommercialCategory,
+                getAllCommercialCategories, exists
+
+2. SERVICIO
+   Model:      Service.java
+   DAO:        ServiceDAO.java
+   Controller: ServiceController.java
+   View:       service.fxml
+   Features:   ComboBox para categoría (no entrada manual)
+   Métodos DAO: insertService, updateService, deleteService,
+                searchService, getAllServices, exists
+
+3. PAQUETE
+   Model:      Package.java
+   DAO:        PackageDAO.java
+   Controller: PackageController.java
+   View:       package.fxml
+   Métodos DAO: insertPackage, updatePackage, deletePackage,
+                searchPackage, getAllPackages, exists
+
+4. CLIENTE_TELEFONO_C
+   Model:      CustomerPhone.java
+   DAO:        CustomerPhoneDAO.java
+   Controller: CustomerPhoneController.java
+   View:       customer-phone.fxml
+   Features:   ComboBox para cliente (no entrada manual)
+   Métodos DAO: insertCustomerPhone, deleteCustomerPhone,
+                searchByCustomerId, getAllCustomerPhones, exists,
+                getAllCustomerIds
+
+5. FACTURA_CONCEPTO
+   Model:      InvoiceConcept.java
+   DAO:        InvoiceConceptDAO.java
+   Controller: InvoiceConceptController.java
+   View:       invoice-concept.fxml
+   Features:   ComboBox para factura (no entrada manual)
+   Métodos DAO: insertInvoiceConcept, deleteInvoiceConcept,
+                searchByInvoiceNumber, getAllInvoiceConcepts, exists,
+                getAllInvoiceNumbers
+
+6. PUNTOS
+   Model:      Points.java
+   DAO:        PointsDAO.java
+   Controller: PointsController.java
+   View:       points.fxml
+   Features:   ComboBox para línea móvil, DatePicker para fecha
+   Métodos DAO: insertPoints, deletePoints, searchByMobileLinePhone,
+                getAllPoints, getAllMobileLinePhones
+
+7. CONSULTAS SQL
+   Model:      QueryResult.java
+   DAO:        QueriesDAO.java
+   Controller: QueriesController.java
+   View:       queries.fxml
+   Métodos DAO: getInvoiceAmountByCustomer (SUM),
+                getCustomerFullNameWithPhone (UPPER, CONCAT),
+                getAuditInfo
+
+================================================================================
+                      MÉTODOS POR CONTROLADOR
+================================================================================
+
+COMUNES EN TODOS LOS CONTROLADORES:
+  initialize()              - Inicialización de UI
+  setupEventHandlers()      - Configurar listeners
+  loadData()               - Cargar datos iniciales
+  handleNew()              - Limpiar formulario para nueva entrada
+  handleSave()             - Guardar cambios en BD
+  handleClear()            - Limpiar campos
+  validateForm()           - Validar datos
+  showError()              - Mostrar error
+  showSuccess()            - Mostrar éxito
+  openWindow()             - Navegar a otra vista
+
+ADICIONALES EN MODELOS RELACIONALES:
+  handleEdit()             - Cargar datos para editar
+  handleDelete()           - Eliminar registro
+  handleSearch()           - Buscar registro
+  selectXXX()             - Seleccionar fila de tabla
+  loadXXXs()              - Cargar lista en tabla
+
+ADICIONALES EN QUERIESCONTROLLER:
+  handleExecuteQuery()      - Ejecutar consulta seleccionada
+  displayResults()          - Mostrar resultados en tabla
+
+================================================================================
+                   ESTRUCTURA DE PAQUETES JAVA
+================================================================================
+
+ucr.proyectobd1
+├── connection
+│   ├── ConnectionDB.java (existente)
+│   └── TestConnection.java (existente)
+├── data (Data Access Layer)
+│   ├── CommercialCategoryDAO.java (NUEVO)
+│   ├── ServiceDAO.java (NUEVO)
+│   ├── PackageDAO.java (NUEVO)
+│   ├── CustomerPhoneDAO.java (NUEVO)
+│   ├── InvoiceConceptDAO.java (NUEVO)
+│   ├── PointsDAO.java (NUEVO)
+│   ├── QueriesDAO.java (NUEVO)
+│   ├── CantonData.java (existente)
+│   ├── DistrictData.java (existente)
+│   └── CustomerData.java (existente)
+├── model (Domain Models)
+│   ├── CommercialCategory.java (NUEVO)
+│   ├── Service.java (NUEVO)
+│   ├── Package.java (NUEVO)
+│   ├── CustomerPhone.java (NUEVO)
+│   ├── InvoiceConcept.java (NUEVO)
+│   ├── Points.java (NUEVO)
+│   ├── QueryResult.java (NUEVO)
+│   ├── Canton.java (existente)
+│   ├── District.java (existente)
+│   ├── Customer.java (existente)
+│   └── CustomerCompl.java (existente)
+└── controller (Presentation Layer)
+    ├── CommercialCategoryController.java (NUEVO)
+    ├── ServiceController.java (NUEVO)
+    ├── PackageController.java (NUEVO)
+    ├── CustomerPhoneController.java (NUEVO)
+    ├── InvoiceConceptController.java (NUEVO)
+    ├── PointsController.java (NUEVO)
+    ├── QueriesController.java (NUEVO)
+    ├── MenuController.java (MODIFICADO)
+    ├── Controller.java (existente)
+    ├── LocalitiesController.java (existente)
+    └── CustomersController.java (existente)
+
+================================================================================
+                      ARCHIVOS FXML POR TIPO
+================================================================================
+
+CRUD SIMPLES (Tabla asociada 1:1):
+  commercial-category.fxml  - Categorías comerciales
+  service.fxml              - Servicios
+  package.fxml              - Paquetes
+  queries.fxml              - Consultas SQL
+
+CRUD RELACIONALES (Tabla asociada N:M o 1:N):
+  customer-phone.fxml       - Teléfonos de clientes (ComboBox cliente)
+  invoice-concept.fxml      - Conceptos de facturas (ComboBox factura)
+  points.fxml               - Puntos (ComboBox línea, DatePicker)
+
+VISTAS MODIFICADAS:
+  hello-view.fxml           - Menú principal (agregados botones)
+
+================================================================================
+                      VALIDACIONES POR MÓDULO
+================================================================================
+
+CommercialCategory:
+  ✓ Código: no vacío, máx 20 caracteres
+  ✓ Descripción: no vacía, máx 255 caracteres
+  ✓ Velocidad: no negativa, número válido
+
+Service:
+  ✓ Código: no vacío, máx 20 caracteres
+  ✓ Nombre: no vacío, máx 100 caracteres
+  ✓ Descripción: no vacía, máx 255 caracteres
+  ✓ Costo: no negativo, número válido
+  ✓ Categoría: debe estar seleccionada
+
+Package:
+  ✓ Código: no vacío, máx 20 caracteres
+  ✓ Nombre: no vacío, máx 100 caracteres
+  ✓ Vigencia: positiva (>0), número entero
+  ✓ Precio: no negativo, número válido
+  ✓ Cantidad: positiva (>0), número entero
+
+CustomerPhone:
+  ✓ Cliente: debe estar seleccionado
+  ✓ Teléfono: no vacío, máx 20 caracteres
+  ✓ Teléfono: solo números, guiones, espacios
+
+InvoiceConcept:
+  ✓ Factura: debe estar seleccionada
+  ✓ Descripción: no vacía, máx 255 caracteres
+  ✓ Monto: no negativo, número válido
+
+Points:
+  ✓ Línea Móvil: debe estar seleccionada
+  ✓ Fecha: debe estar seleccionada
+  ✓ Cantidad: no negativa, número válido
+  ✓ Saldo: no negativo, número válido
+
+================================================================================
+                      CONSULTAS SQL IMPLEMENTADAS
+================================================================================
+
+Consulta 1: Total facturado por cliente
+  Archivo:  QueriesDAO.java
+  Función:  getInvoiceAmountByCustomer()
+  Operador: SUM
+  Salida:   ID Cliente, Nombre, Apellidos, Total Facturado
+
+Consulta 2: Cliente y Teléfono
+  Archivo:  QueriesDAO.java
+  Función:  getCustomerFullNameWithPhone()
+  Operador: UPPER, CONCAT
+  Salida:   "NOMBRE COMPLETO - TELÉFONO"
+
+Consulta 3: Auditoría
+  Archivo:  QueriesDAO.java
+  Función:  getAuditInfo()
+  Campos:   UsuarioCreacion, FechaCreacion, Estado
+  Salida:   Información de auditoría
+
+================================================================================
+                      CÓMO USAR ESTE DESARROLLO
+================================================================================
+
+1. COPIAR ARCHIVOS:
+   - Copiar todos los archivos .java de model/, data/, controller/
+   - Copiar todos los archivos .fxml de resources/
+   
+2. VERIFICAR INTEGRIDAD:
+   - Todos los imports están correctamente referenciados
+   - MenuController.java está actualizado
+   - hello-view.fxml está actualizado
+
+3. COMPILAR PROYECTO:
+   cd D:\Programacion2\ProyectoBD1
+   mvn clean compile
+
+4. EJECUTAR APLICACIÓN:
+   mvn javafx:run
+
+5. PROBAR MÓDULOS:
+   - Acceder desde menú principal
+   - Probar CRUD básicos
+   - Probar validaciones
+   - Probar consultas
+
+================================================================================
+                      NOTAS FINALES
+================================================================================
+
+✓ Todos los archivos están listos para integración
+✓ No hay dependencias externas adicionales
+✓ Compatible con la arquitectura existente
+✓ Código comentado cuando es necesario
+✓ Sigue convenciones del proyecto
+✓ Utiliza PreparedStatement
+✓ Manejo robusto de excepciones
+✓ UI intuitiva y consistente
+✓ Documentación completa incluida
+
+================================================================================
+                          FIN DE LISTA
+================================================================================

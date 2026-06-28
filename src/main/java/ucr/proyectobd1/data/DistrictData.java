@@ -80,7 +80,7 @@ public class DistrictData {
         try {
             Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement statement = con.prepareStatement(instruccionSQL);
-            statement.setString(1, codDistrict);
+            statement.setString(1, codDistrict);;
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()){

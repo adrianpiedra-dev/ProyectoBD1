@@ -8,6 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +19,10 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button btnOpenLocalities;
+    @FXML
+    private Button btnCustomers;
+    @FXML
+    private ImageView imageviewLogo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -24,11 +30,20 @@ public class MenuController implements Initializable {
     }
 
     void operationButtons() {
-        // Pasamos el 'actionEvent' al método openWindow para que sepa desde qué ventana se llamó
+
+        Image logo = new Image(getClass().getResourceAsStream("/ucr/proyectobd1/Logo.png"));
+        imageviewLogo.setImage(logo);
+
+        imageviewLogo.setFitWidth(200);
+        imageviewLogo.setPreserveRatio(true);
+
         btnOpenLocalities.setOnAction(actionEvent -> {
             openWindow("/ucr/proyectobd1/localities.fxml", actionEvent);
         });
 
+        btnCustomers.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/customers.fxml", actionEvent);
+        });
     }
 
     private void openWindow(String rutaFxml, ActionEvent event) {

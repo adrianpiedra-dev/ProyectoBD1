@@ -2,6 +2,7 @@ package ucr.proyectobd1.data;
 
 import ucr.proyectobd1.connection.ConnectionDB;
 import ucr.proyectobd1.model.Customer;
+import ucr.proyectobd1.model.CustomerCompl;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class CustomerData {
 
     public String searchCustomer(String code) {
         String result = "";
-        String instructionSQL1 = "SELECT CLIENTE.ID, CLIENTE.NOMBRE, CLIENTE.APELLIDO_1, CLIENTE.APELLIDO_2, CLIENTE.DIRECCION_EXACTA, CANTON.Provincia, CANTON.NombreCanton, DISTRITO.Nombre_Distrito, CLIENTE_CORREO.CORREO, CLIENTE.TIPO FROM CLIENTE JOIN DISTRITO ON CLIENTE.CodDistrito = DISTRITO.CodDistrito JOIN CANTON ON DISTRITO.CodCanton = CANTON.CodCanton JOIN CLIENTE_CORREO ON CLIENTE.ID = CLIENTE_CORREO.ID_CLIENTE WHERE CLIENTE.ID = ?";
+        String instructionSQL1 = "SELECT CLIENTE.ID, CLIENTE.NOMBRE, CLIENTE.APELLIDO_1, CLIENTE.APELLIDO_2, CLIENTE.DIRECCION_EXACTA, CANTON.Provincia, CANTON.CodCanton, DISTRITO.CodDistrito, CLIENTE_CORREO.CORREO, CLIENTE.TIPO FROM CLIENTE JOIN DISTRITO ON CLIENTE.CodDistrito = DISTRITO.CodDistrito JOIN CANTON ON DISTRITO.CodCanton = CANTON.CodCanton JOIN CLIENTE_CORREO ON CLIENTE.ID = CLIENTE_CORREO.ID_CLIENTE WHERE CLIENTE.ID = ?";
         try {
             Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement statement = con.prepareStatement(instructionSQL1);
@@ -79,7 +80,7 @@ public class CustomerData {
                 String email = resultSet.getString(9);
                 String type = resultSet.getString(10);
 
-                result += id + "," + name + "," + lastName1 + "," + lastName2 + "," + address + "," + province + "," + canton + "," + district + "," + email + "," + type;
+                result += id + "&" + name + "&" + lastName1 + "&" + lastName2 + "&" + address + "&" + province + "&" + canton + "&" + district + "&" + email + "&" + type;
 
             }
 
@@ -91,9 +92,9 @@ public class CustomerData {
         }
     }
 
-    public String searchCustomerDistrict(String code){
+    public List<CustomerCompl> searchCustomerDistrict(String code){
 
-        String result = "";
+        List<CustomerCompl> list = new ArrayList<>();
 
         String instructionSQL1 = "SELECT CLIENTE.ID, CLIENTE.NOMBRE, CLIENTE.APELLIDO_1, CLIENTE.APELLIDO_2, CLIENTE.DIRECCION_EXACTA, CANTON.Provincia, CANTON.NombreCanton, DISTRITO.Nombre_Distrito, CLIENTE_CORREO.CORREO, CLIENTE.TIPO FROM CLIENTE JOIN DISTRITO ON CLIENTE.CodDistrito = DISTRITO.CodDistrito JOIN CANTON ON DISTRITO.CodCanton = CANTON.CodCanton JOIN CLIENTE_CORREO ON CLIENTE.ID = CLIENTE_CORREO.ID_CLIENTE WHERE DISTRITO.CodDistrito = ?";
         try {
@@ -114,12 +115,13 @@ public class CustomerData {
                 String email = resultSet.getString(9);
                 String type = resultSet.getString(10);
 
-                result += id + "," + name + "," + lastName1 + "," + lastName2 + "," + address + "," + province + "," + canton + "," + district + "," + email + "," + type;
+               CustomerCompl customerCompl = new CustomerCompl(id, name, lastName1, lastName2, address, province, canton, district, email, type);
+               list.add(customerCompl);
 
 
             }
 
-            return result;
+            return list;
 
 
         } catch (SQLException e) {
@@ -127,9 +129,9 @@ public class CustomerData {
         }
     }
 
-    public List<String> searchCustomersType(String type){
+    public List<CustomerCompl> searchCustomersType(String type){
 
-        List<String> list = new ArrayList<>();
+        List<CustomerCompl> list = new ArrayList<>();
 
         String instructionSQL1 = "SELECT CLIENTE.ID, CLIENTE.NOMBRE, CLIENTE.APELLIDO_1, CLIENTE.APELLIDO_2, CLIENTE.DIRECCION_EXACTA, CANTON.Provincia, CANTON.NombreCanton, DISTRITO.Nombre_Distrito, CLIENTE_CORREO.CORREO FROM CLIENTE JOIN DISTRITO ON CLIENTE.CodDistrito = DISTRITO.CodDistrito JOIN CANTON ON DISTRITO.CodCanton = CANTON.CodCanton JOIN CLIENTE_CORREO ON CLIENTE.ID = CLIENTE_CORREO.ID_CLIENTE WHERE CLIENTE.TIPO = ?";
         try {
@@ -149,8 +151,42 @@ public class CustomerData {
                 String district = resultSet.getString(8);
                 String email = resultSet.getString(9);
 
-                String result = id + "," + name + "," + lastName1 + "," + lastName2 + "," + address + "," + province + "," + canton + "," + district + "," + email;
-                list.add(result);
+                CustomerCompl customerCompl = new CustomerCompl(id, name, lastName1, lastName2, address, province, canton, district, email, type);
+                list.add(customerCompl);
+            }
+
+            return list;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<CustomerCompl> searchTypeDistrict(String type, String districtS){
+        List<CustomerCompl> list = new ArrayList<>();
+
+        String instructionSQL1 = "SELECT CLIENTE.ID, CLIENTE.NOMBRE, CLIENTE.APELLIDO_1, CLIENTE.APELLIDO_2, CLIENTE.DIRECCION_EXACTA, CANTON.Provincia, CANTON.NombreCanton, DISTRITO.Nombre_Distrito, CLIENTE_CORREO.CORREO FROM CLIENTE JOIN DISTRITO ON CLIENTE.CodDistrito = DISTRITO.CodDistrito JOIN CANTON ON DISTRITO.CodCanton = CANTON.CodCanton JOIN CLIENTE_CORREO ON CLIENTE.ID = CLIENTE_CORREO.ID_CLIENTE WHERE CLIENTE.TIPO = ? AND CLIENTE.CodDistrito = ?";
+        try {
+            Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement statement = con.prepareStatement(instructionSQL1);
+            statement.setString(1, type);
+            statement.setString(2, districtS);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                String id = resultSet.getString(1);
+                String name = resultSet.getString(2);
+                String lastName1 = resultSet.getString(3);
+                String lastName2 = resultSet.getString(4);
+                String address = resultSet.getString(5);
+                String province = resultSet.getString(6);
+                String canton = resultSet.getString(7);
+                String district = resultSet.getString(8);
+                String email = resultSet.getString(9);
+
+                CustomerCompl customerCompl = new CustomerCompl(id, name, lastName1, lastName2, address, province, canton, district, email, type);
+                list.add(customerCompl);
             }
 
             return list;
@@ -211,6 +247,27 @@ public class CustomerData {
         }
     }
 
+    public boolean existCustomerEmail(String id, String email){
+        String instructionSQL1 = "SELECT * FROM CLIENTE_CORREO WHERE ID_CLIENTE = ? AND CORREO = ?";
+        try {
+            Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement statement = con.prepareStatement(instructionSQL1);
+            statement.setString(1, id);
+            statement.setString(2, email);
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()){
+                return true;
+            }
+
+            return false;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void updateModifyCustomerEmail(String newEmail, String id, String oldEmail){
         String instructionSQL = "UPDATE CLIENTE_CORREO SET CORREO = ? WHERE ID_CLIENTE = ? AND CORREO = ?";
         try {
@@ -220,6 +277,27 @@ public class CustomerData {
             statement.setString(2, id);
             statement.setString(3, oldEmail);
             statement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean existCustomer(String code){
+
+        String instructionSQL1 = "SELECT * FROM CLIENTE WHERE ID = ?";
+        try {
+            Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement statement = con.prepareStatement(instructionSQL1);
+            statement.setString(1, code);
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()){
+                return true;
+            }
+
+            return false;
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

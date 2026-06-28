@@ -2,121 +2,136 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucr.proyectobd1.controller.LocalitiesController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="root-container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucr.proyectobd1.controller.LocalitiesController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="580.0" prefWidth="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="label-header">
+            <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="780.0" spacing="80.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="484.0" styleClass="label-header" text="CRUD Localidades" />
+                  <ImageView fx:id="imageviewLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label prefHeight="40.0" prefWidth="300.0" styleClass="label-header" text="CRUD Localidades" />
                   <Button fx:id="btnBackMenu" mnemonicParsing="false" text="Volver" textAlignment="RIGHT" />
                </children>
             </HBox>
-            <TabPane prefHeight="379.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="500.0" prefWidth="780.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
               <tabs>
                 <Tab text="Crear Cantón">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="CENTER" layoutX="7.0" prefHeight="312.0" prefWidth="600.0">
-                                 <children>
-                                    <HBox alignment="CENTER" prefHeight="37.0" prefWidth="600.0">
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="65.0" text="ID: " />
-                                          <TextField fx:id="txtIdCanton" prefHeight="25.0" prefWidth="153.0" styleClass="text-field" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="39.0" prefWidth="600.0">
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="64.0" text="Nombre: " />
-                                          <TextField fx:id="txtNameCanton" prefHeight="25.0" prefWidth="155.0" styleClass="text-field" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0">
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="65.0" text="Provincia:" />
-                                          <TextField fx:id="txtProvince" prefHeight="25.0" prefWidth="155.0" styleClass="text-field" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="BOTTOM_CENTER" prefHeight="66.0" prefWidth="590.0" spacing="20.0">
-                                       <children>
-                                          <Button fx:id="btnCleanCanton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Borrar" />
-                                          <Button fx:id="btnCreateCanton" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Crear" />
-                                       </children>
-                                       <padding>
-                                          <Insets left="20.0" right="15.0" />
-                                       </padding>
-                                    </HBox>
-                                    <Label fx:id="lblErrorCanton" alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="529.0" textAlignment="CENTER" textFill="#b92626">
-                                       <padding>
-                                          <Insets top="20.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                               <VBox alignment="CENTER" prefHeight="440.0" prefWidth="760.0" spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                  <children>
+                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="100.0" prefHeight="17.0" prefWidth="100.0" text="ID: " />
+                                           <TextField fx:id="txtIdCanton" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="100.0" prefHeight="17.0" prefWidth="100.0" text="Nombre: " />
+                                           <TextField fx:id="txtNameCanton" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="100.0" prefHeight="17.0" prefWidth="100.0" text="Provincia:" />
+                                           <ComboBox fx:id="comboboxProvincesCC" prefHeight="30.0" prefWidth="200.0" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="50.0" prefWidth="760.0" spacing="20.0">
+                                        <children>
+                                           <Button fx:id="btnCleanCanton" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="button-secondary" text="Borrar" />
+                                           <Button fx:id="btnCreateCanton" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Crear" />
+                                        </children>
+                                     </HBox>
+                                     <Label fx:id="lblErrorCanton" alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="529.0" textAlignment="CENTER" textFill="#b92626">
+                                        <padding>
+                                           <Insets top="10.0" />
+                                        </padding>
+                                     </Label>
+                                  </children>
+                                  <padding>
+                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                  </padding>
+                               </VBox>
+                            </children>
+                         </AnchorPane>
                   </content>
                 </Tab>
                 <Tab text="Eliminar Cantón">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox layoutX="2.0" prefHeight="310.0" prefWidth="600.0">
-                                 <children>
-                                    <HBox alignment="CENTER" prefHeight="113.0" prefWidth="600.0">
-                                       <children>
-                                          <Label text="Codigo del Cantón: " />
-                                          <TextField fx:id="txtCodeCantonDelete" styleClass="text-field" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="600.0" spacing="20.0">
-                                       <children>
-                                          <Button fx:id="btnCleanDC" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Limpiar" />
-                                          <Button fx:id="btnDeleteCanton" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Eliminar" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <Label fx:id="lblErrorDeleteCanton" alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="596.0" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                  </content>
+                   <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                               <VBox alignment="CENTER" prefHeight="440.0" prefWidth="760.0" spacing="25.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                  <children>
+                                     <HBox alignment="CENTER" prefHeight="80.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="150.0" prefHeight="17.0" prefWidth="150.0" text="Codigo del Cantón: " />
+                                           <TextField fx:id="txtCodeCantonDelete" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="50.0" prefWidth="760.0" spacing="20.0">
+                                        <children>
+                                           <Button fx:id="btnCleanDC" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="button-secondary" text="Limpiar" />
+                                           <Button fx:id="btnDeleteCanton" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Eliminar" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="760.0">
+                                        <children>
+                                           <Label fx:id="lblErrorDeleteCanton" alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="700.0" />
+                                        </children>
+                                     </HBox>
+                                  </children>
+                               </VBox>
+                            </children>
+                         </AnchorPane>
+                   </content>
                 </Tab>
-                  <Tab text="Buscar Cantón">
+                  <Tab text="Ver Cantones">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox layoutY="7.0" prefHeight="290.0" prefWidth="600.0">
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="440.0" prefWidth="760.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="76.0" prefWidth="600.0" spacing="10.0">
+                                    <HBox alignment="CENTER" prefHeight="76.0" prefWidth="760.0" spacing="10.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="116.0" text="Código del Cantón: " />
-                                          <TextField fx:id="txtCodCantonSearch" styleClass="text-field" />
-                                          <Button fx:id="btnSearchCanton" mnemonicParsing="false" text="Buscar" />
+                                          <Label prefHeight="17.0" prefWidth="149.0" text="Nombre de la Provincia: " />
+                                          <ComboBox fx:id="comboboxProvincesVC" prefWidth="150.0" />
+                                          <Button fx:id="btnSearchCantons" mnemonicParsing="false" text="Buscar" />
                                           <Button fx:id="btnCleanCantonSearch" mnemonicParsing="false" text="Limpiar" />
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <HBox alignment="CENTER" prefHeight="250.0" prefWidth="760.0">
                                        <children>
-                                          <TextArea fx:id="txtResultCantonSearch" editable="false" prefHeight="100.0" prefWidth="343.0" styleClass="text-area" />
+                                          <ScrollPane prefHeight="216.0" prefWidth="241.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="393.0" prefWidth="228.0">
+                                                   <children>
+                                                      <TableView fx:id="tableViewCantons" layoutY="-2.0" prefHeight="385.0" prefWidth="235.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="columnIdCantons" prefWidth="75.0" text="Código" />
+                                                          <TableColumn fx:id="columnNameCantons" prefWidth="75.0" text="Nombre" />
+                                                            <TableColumn fx:id="columnProvinceCantons" prefWidth="75.0" text="Provincia" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </ScrollPane>
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
@@ -132,18 +147,130 @@
                   </Tab>
                   <Tab text="Crear Distrito">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                               <VBox alignment="CENTER" prefHeight="440.0" prefWidth="760.0" spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                  <children>
+                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="100.0" prefHeight="17.0" prefWidth="100.0" text="ID: " />
+                                           <TextField fx:id="txtIdDistrictCreate" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="100.0" prefHeight="17.0" prefWidth="100.0" text="Nombre: " />
+                                           <TextField fx:id="txtNameDistrictCreate" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="100.0" prefHeight="17.0" prefWidth="100.0" text="Provincia" />
+                                           <ComboBox fx:id="comboboxProvincesCD" prefHeight="30.0" prefWidth="200.0" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="40.0" prefWidth="760.0" spacing="15.0">
+                                        <children>
+                                           <Label minWidth="100.0" prefHeight="17.0" prefWidth="100.0" text="Cantón" />
+                                           <ComboBox fx:id="comboboxCantonsCD" prefHeight="30.0" prefWidth="200.0" />
+                                        </children>
+                                     </HBox>
+                                     <HBox alignment="CENTER" prefHeight="50.0" prefWidth="760.0" spacing="20.0">
+                                        <children>
+                                           <Button fx:id="btnCleanDistrictC" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="button-secondary" text="Borrar" />
+                                           <Button fx:id="btnCreateDistrict" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Crear" />
+                                        </children>
+                                     </HBox>
+                                     <Label fx:id="lblErrorCreateDistrict" alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="529.0" textAlignment="CENTER" textFill="#b92626">
+                                        <padding>
+                                           <Insets top="10.0" />
+                                        </padding>
+                                     </Label>
+                                     <HBox alignment="CENTER" prefHeight="39.0" prefWidth="600.0" />
+                                  </children>
+                                  <padding>
+                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                  </padding>
+                               </VBox>
+                            </children>
+                         </AnchorPane>
                     </content>
                   </Tab>
                   <Tab text="Eliminar Distrito">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="428.0" prefWidth="740.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="120.0" prefWidth="706.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="120.0" text="Codigo del Distrito: " />
+                                          <TextField fx:id="txtCodeDistrictDelete" styleClass="text-field" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="600.0" spacing="20.0">
+                                       <children>
+                                          <Button fx:id="btnCleanDD" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Limpiar" />
+                                          <Button fx:id="btnDeleteDistrict" mnemonicParsing="false" prefHeight="33.0" prefWidth="104.0" text="Eliminar" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="lblErrorDeleteDistrict" alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="596.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="Buscar Distrito">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
+                  <Tab text="Ver Distritos">
+                     <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <children>
+                                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="440.0" prefWidth="760.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                        <children>
+                                           <HBox alignment="CENTER" prefHeight="76.0" prefWidth="760.0" spacing="10.0">
+                                              <children>
+                                                 <Label prefHeight="17.0" prefWidth="126.0" text="Código del Cantón" />
+                                                 <TextField fx:id="txtCodeCantonSearchDistrict" prefHeight="25.0" prefWidth="161.0" styleClass="text-field" />
+                                                 <Button fx:id="btnSearchDistrict" mnemonicParsing="false" text="Buscar" />
+                                                 <Button fx:id="btnCleanSearchDistrict" mnemonicParsing="false" text="Limpiar" />
+                                              </children>
+                                           </HBox>
+                                           <HBox alignment="CENTER" prefHeight="250.0" prefWidth="760.0">
+                                              <children>
+                                                 <ScrollPane prefHeight="285.0" prefWidth="276.0">
+                                                    <content>
+                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="459.0" prefWidth="273.0">
+                                                          <children>
+                                                             <TableView fx:id="tableViewDistricts" layoutY="-1.0" prefHeight="456.0" prefWidth="264.0">
+                                                               <columns>
+                                                                  <TableColumn fx:id="columnCodeDistrict" prefWidth="75.0" text="Código" />
+                                                                  <TableColumn fx:id="columnNameDistricts" prefWidth="75.0" text="Nombre" />
+                                                                  <TableColumn fx:id="columnCodeCantonDistrict" prefWidth="119.0" text="Código Cantón" />
+                                                               </columns>
+                                                             </TableView>
+                                                          </children>
+                                                       </AnchorPane>
+                                                    </content>
+                                                 </ScrollPane>
+                                              </children>
+                                           </HBox>
+                                           <HBox prefHeight="100.0" prefWidth="200.0">
+                                              <children>
+                                                 <Label fx:id="lblErrorSearchDistrict" alignment="CENTER" prefHeight="106.0" prefWidth="760.0" />
+                                              </children>
+                                           </HBox>
+                                        </children>
+                                     </VBox>
+                                  </children>
+                               </AnchorPane>
+                            </children>
+                       </AnchorPane>
+                     </content>
                   </Tab>
               </tabs>
             </TabPane>

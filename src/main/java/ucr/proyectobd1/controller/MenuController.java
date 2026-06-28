@@ -22,7 +22,41 @@ public class MenuController implements Initializable {
     @FXML
     private Button btnCustomers;
     @FXML
+    private Button btnCommercialCategory;
+    @FXML
+    private Button btnService;
+    @FXML
+    private Button btnPackage;
+    @FXML
+    private Button btnCustomerPhone;
+    @FXML
+    private Button btnInvoiceConcept;
+    @FXML
+    private Button btnPoints;
+    @FXML
+    private Button btnQueries;
+    @FXML
     private ImageView imageviewLogo;
+    @FXML
+    private Button btnTarrifPlan;
+    @FXML
+    private Button btnBill;
+    @FXML
+    private Button btnPromotion;
+    @FXML
+    private Button btnConsumption;
+    @FXML
+    private Button btnVoiceCall;
+    @FXML
+    private Button btnLineService;
+    @FXML
+    private Button btnLinePackage;
+    @FXML
+    private Button btnIncompatibilities;
+    @FXML
+    private Button btnHistoricalTP;
+    @FXML
+    private Button btnMobileLine;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,6 +77,74 @@ public class MenuController implements Initializable {
 
         btnCustomers.setOnAction(actionEvent -> {
             openWindow("/ucr/proyectobd1/customers.fxml", actionEvent);
+        });
+
+        btnCommercialCategory.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/commercial-category.fxml", actionEvent);
+        });
+
+        btnService.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/service.fxml", actionEvent);
+        });
+
+        btnPackage.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/package.fxml", actionEvent);
+        });
+
+        btnCustomerPhone.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/customer-phone.fxml", actionEvent);
+        });
+
+        btnInvoiceConcept.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/invoice-concept.fxml", actionEvent);
+        });
+
+        btnPoints.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/points.fxml", actionEvent);
+        });
+
+        btnQueries.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/queries.fxml", actionEvent);
+        });
+
+        btnTarrifPlan.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/tariff-plan.fxml", actionEvent);
+        });
+
+        btnBill.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/bill.fxml", actionEvent);
+        });
+
+        btnPromotion.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/promotion.fxml", actionEvent);
+        });
+
+        btnConsumption.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/consumption.fxml", actionEvent);
+        });
+
+        btnVoiceCall.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/voice-call.fxml", actionEvent);
+        });
+
+        btnLineService.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/line-service.fxml", actionEvent);
+        });
+
+        btnLinePackage.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/line-additional-package.fxml", actionEvent);
+        });
+
+        btnIncompatibilities.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/incompatibilities-promotions.fxml", actionEvent);
+        });
+
+        btnHistoricalTP.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/historical-tp.fxml", actionEvent);
+        });
+
+        btnMobileLine.setOnAction(actionEvent -> {
+            openWindow("/ucr/proyectobd1/linea-movil.fxml", actionEvent);
         });
     }
 

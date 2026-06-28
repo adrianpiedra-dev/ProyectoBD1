@@ -4,7 +4,7 @@ module ucr.proyectobd1 {
     requires java.sql;
     requires javafx.base;
     requires javafx.graphics;
-   // Lo vas a ocupar para conectar la Base de Datos
+    // Lo vas a ocupar para conectar la Base de Datos
 
     opens ucr.proyectobd1.model to javafx.base, javafx.fxml;
     // Permite que JavaFX lea los controladores para las interfaces FXML

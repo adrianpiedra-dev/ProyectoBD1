@@ -237,14 +237,14 @@ public class LocalitiesController implements Initializable {
         String nameCanton = txtNameCanton.getText();
         String province = comboboxProvincesCC.getValue().toLowerCase();
 
-        if(idCanton.isEmpty() && idCanton.isBlank()){
-            lblErrorCanton.setText("ERROR: EL ID DEL CANTÓN NO PUEDE ESTAR VACÍO");
+        if(idCanton.isEmpty() || idCanton.isBlank()){
+            showError("Error", "EL ID DEL CANTÓN NO PUEDE ESTAR VACÍO");
             return;
-        } else if(nameCanton.isEmpty() && nameCanton.isBlank()){
-            lblErrorCanton.setText("ERROR: EL NOMBRE DEL CANTÓN NO PUEDE ESTAR VACÍO");
+        } else if(nameCanton.isEmpty() || nameCanton.isBlank()){
+            showError("Error", "EL NOMBRE DEL CANTÓN NO PUEDE ESTAR VACÍO");
             return;
-        }else if(province.isEmpty() && province.isBlank()){
-            lblErrorCanton.setText("ERROR: LA PROVINCIA NO PUEDE ESTAR VACÍO");
+        }else if(province.isEmpty() || province.isBlank()){
+            showError("Error", "LA PROVINCIA NO PUEDE ESTAR VACÍA");
             return;
         }else{
 
@@ -252,9 +252,9 @@ public class LocalitiesController implements Initializable {
 
             if(!cantonData.existCanton(canton.getCode())){
                 cantonData.insertCanton(canton);
-                lblErrorCanton.setText("CANTÓN CREADO CON ÉXITO");
+                showSuccess("CANTÓN CREADO CON ÉXITO");
             }else{
-                lblErrorCanton.setText("ERROR: CANTON YA EXISTENTE");
+                showError("Error", "CANTON YA EXISTENTE");
             }
 
         }
@@ -264,10 +264,10 @@ public class LocalitiesController implements Initializable {
         String code = txtCodeCantonDelete.getText();
 
         if(code.isEmpty() || code.isBlank()){
-            lblErrorDeleteCanton.setText("ERROR: DEBE INGRESAR EL CÓDIGO DEL CANTÓN");
+            showError("Error", "DEBE INGRESAR EL CÓDIGO DEL CANTÓN");
             return;
         }else if(!cantonData.existCanton(code)){
-            lblErrorDeleteCanton.setText("ERROR: NO EXISTE ESE CANTÓN");
+            showError("Error", "NO EXISTE ESE CANTÓN");
         }else{
 
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
@@ -280,6 +280,7 @@ public class LocalitiesController implements Initializable {
 
             if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
                 cantonData.deleteCanton(code);
+                showSuccess("CANTÓN ELIMINADO CON ÉXITO");
             }
 
         }
@@ -313,18 +314,18 @@ public class LocalitiesController implements Initializable {
         String canton = comboboxCantonsCD.getValue();
 
         if(code.isEmpty() || code.isBlank()){
-            lblErrorCreateDistrict.setText("ERROR:DEBE DIGITAR EL CÓDIGO DEL DISTRITO");
+            showError("Error", "DEBE DIGITAR EL CÓDIGO DEL DISTRITO");
             return;
         } else if (name.isBlank() || name.isEmpty()) {
-            lblErrorCreateDistrict.setText("ERROR:DEBE DIGITAR EL NOMBRE DEL DISTRITO");
+            showError("Error", "DEBE DIGITAR EL NOMBRE DEL DISTRITO");
             return;
         } else if (districtData.existDistrict(code)) {
-            lblErrorCreateDistrict.setText("ERROR: YA EXISTE UN DISTRITO CON ESE NOMBRE");
+            showError("Error", "YA EXISTE UN DISTRITO CON ESE NOMBRE");
             return;
         }else{
             District district = new District(code, name, canton);
             districtData.insertDistrict(district);
-            lblErrorCreateDistrict.setText("DISTRITO CREADO CON ÉXITO");
+            showSuccess("DISTRITO CREADO CON ÉXITO");
         }
     }
 
@@ -332,10 +333,10 @@ public class LocalitiesController implements Initializable {
         String code = txtCodeDistrictDelete.getText();
 
         if(code.isEmpty() || code.isBlank()){
-            lblErrorDeleteDistrict.setText("ERROR: DEBE INGRESAR EL CÓDIGO DEL DISTRITO");
+            showError("Error", "DEBE INGRESAR EL CÓDIGO DEL DISTRITO");
             return;
         }else if(!districtData.existDistrict(code)){
-            lblErrorDeleteDistrict.setText("ERROR: NO EXISTE ESE DISTRITO");
+            showError("Error", "NO EXISTE ESE DISTRITO");
         }else{
 
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
@@ -348,6 +349,7 @@ public class LocalitiesController implements Initializable {
 
             if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
                 districtData.deleteDistrict(code);
+                showSuccess("DISTRITO ELIMINADO CON ÉXITO");
             }
 
         }
@@ -357,7 +359,7 @@ public class LocalitiesController implements Initializable {
         String canton = txtCodeCantonSearchDistrict.getText();
 
         if(canton.isEmpty() || canton.isBlank()){
-            lblErrorSearchDistrict.setText("ERROR: ESE CANTÓN NO EXISTE");
+            showError("Error", "ESE CANTÓN NO EXISTE");
             return;
         }else{
             List<District> districts = districtData.getDistricts(canton);
@@ -366,6 +368,20 @@ public class LocalitiesController implements Initializable {
         }
     }
 
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
+    private void showSuccess(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Éxito");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }

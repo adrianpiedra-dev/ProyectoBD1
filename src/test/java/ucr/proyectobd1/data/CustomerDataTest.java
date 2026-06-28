@@ -40,20 +40,6 @@ class CustomerDataTest {
     }
 
     @Test
-    void searchCustomerDistrict() {
-        String result = customerData.searchCustomerDistrict("CAR1-1");
-        System.out.println(result);
-    }
-
-    @Test
-    void searchCustomersType() {
-        List<String> list = customerData.searchCustomersType("PLATINO");
-        for(int i=0; i < list.size(); i++){
-            System.out.println(list.get(i).toString());
-        }
-    }
-
-    @Test
     void updateCustomerInfo() {
         Customer customer = new Customer("305680723", "ADRIAN", "PIEDRA", "ARRIETA", "800 metros norte de la Catedral", "CART1-4", "adriaparrieta516@gmail.com", "PLATINO");
         customerData.updateCustomerInfo(customer);

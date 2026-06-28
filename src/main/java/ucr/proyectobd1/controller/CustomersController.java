@@ -499,31 +499,31 @@ public class CustomersController {
         String email = txtEmailCreateCustomer.getText().toLowerCase();
 
         if(id.isBlank() || id.isEmpty()){
-            lblErrorCreateCustomer.setText("ERROR: EL ID NO PUEDE ESTAR VACÍO");
+            showError("Error", "EL ID NO PUEDE ESTAR VACÍO");
             return;
         } else if (name.isEmpty() || name.isBlank()) {
-            lblErrorCreateCustomer.setText("ERROR: EL NOMBRE NO PUEDE ESTAR VACÍO");
+            showError("Error", "EL NOMBRE NO PUEDE ESTAR VACÍO");
             return;
         } else if (lastName1.isBlank() || lastName1.isEmpty() || lastName2.isEmpty() || lastName2.isBlank()) {
-            lblErrorCreateCustomer.setText("ERROR: NINGÚN APELLIDO PUEDE ESTAR VACÍO");
+            showError("Error", "NINGÚN APELLIDO PUEDE ESTAR VACÍO");
             return;
-        } else if (district.isEmpty() || district.isBlank()) {
-            lblErrorCreateCustomer.setText("ERROR: DEBE SELECCIONAR UN DISTRITO");
+        } else if (district == null || district.isEmpty() || district.isBlank()) {
+            showError("Error", "DEBE SELECCIONAR UN DISTRITO");
             return;
-        } else if (type.isBlank() || type.isEmpty()) {
-            lblErrorCreateCustomer.setText("ERROR: DEBE SELECCIONAR UN TIPO DE CLIENTE");
+        } else if (type == null || type.isBlank() || type.isEmpty()) {
+            showError("Error", "DEBE SELECCIONAR UN TIPO DE CLIENTE");
             return;
         } else if (email.isEmpty() || email.isBlank()) {
-            lblErrorCreateCustomer.setText("ERROR: DEBE DIGITAR UN CORREO");
+            showError("Error", "DEBE DIGITAR UN CORREO");
             return;
 
         } else if (customerData.existCustomer(id)) {
-            lblErrorCreateCustomer.setText("ERROR: YA ESTE ESE CLIENTE");
+            showError("Error", "YA EXISTE ESE CLIENTE");
             return;
         }else{
             Customer customer = new Customer(id, name, lastName1, lastName2, address, district, email, type);
             customerData.insertCustomer(customer);
-            lblErrorCreateCustomer.setText("CLIENTE CREADO CON ÉXITO");
+            showSuccess("CLIENTE CREADO CON ÉXITO");
             return;
         }
 
@@ -533,10 +533,10 @@ public class CustomersController {
         String id = lblCodeDeleteCustomer.getText();
 
         if(id.isBlank() || id.isEmpty()){
-            lblErrorDeleteCustomer.setText("ERROR: DEBE DIGITAR UN ID");
+            showError("Error", "DEBE DIGITAR UN ID");
             return;
         } else if (!customerData.existCustomer(id)) {
-            lblErrorDeleteCustomer.setText("ERROR: NO EXISTE ESE CLIENTE");
+            showError("Error", "NO EXISTE ESE CLIENTE");
             return;
         }else{
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
@@ -548,7 +548,7 @@ public class CustomersController {
 
             if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
                 customerData.deleteCustomer(id);
-                lblErrorDeleteCustomer.setText("CLIENTE ELIMINADO CON ÉXITO");
+                showSuccess("CLIENTE ELIMINADO CON ÉXITO");
                 return;
             }
         }
@@ -558,10 +558,10 @@ public class CustomersController {
         String id = txtIdCustomerUpdate.getText();
 
         if(id.isBlank() || id.isEmpty()){
-            lblErrorUpdate.setText("ERROR: DEBE DIGITAR UN ID");
+            showError("Error", "DEBE DIGITAR UN ID");
             return;
         } else if (!customerData.existCustomer(id)) {
-            lblErrorUpdate.setText("ERROR: NO EXISTE ESE CLIENTE");
+            showError("Error", "NO EXISTE ESE CLIENTE");
         } else {
             String informationCustomer = customerData.searchCustomer(id);
 
@@ -596,7 +596,7 @@ public class CustomersController {
 
                     Customer customer = new Customer(id, name, lastName1, lastName2, address, district, parts[8], type);
                     customerData.updateCustomerInfo(customer);
-                    lblErrorUpdate.setText("CLIENTE ACTUALIZADO CON ÉXITO");
+                    showSuccess("CLIENTE ACTUALIZADO CON ÉXITO");
 
                 }
 
@@ -609,9 +609,9 @@ public class CustomersController {
         String id = txtIdViewCustomer.getText();
 
         if(id.isBlank() || id.isEmpty()){
-            lblErrorViewCustomer.setText("ERROR: DEBE DIGITAR UN ID");
+            showError("Error", "DEBE DIGITAR UN ID");
         } else if (!customerData.existCustomer(id)) {
-            lblErrorViewCustomer.setText("ERROR: CLIENTE NO EXISTE");
+            showError("Error", "CLIENTE NO EXISTE");
         }else{
             String informationCustomer = customerData.searchCustomer(id);
             String [] parts = informationCustomer.split("&");
@@ -629,16 +629,16 @@ public class CustomersController {
         String email = txtNewEmail.getText();
 
         if(id.isBlank() || id.isEmpty()){
-            lblErrorEmail.setText("ERROR: DEBE DIGITAR UN ID");
+            showError("Error", "DEBE DIGITAR UN ID");
         } else if (email.isEmpty() || email.isBlank()) {
-            lblErrorEmail.setText("ERROR: DEBE DIGITAR UN NUEVO CORREO");
+            showError("Error", "DEBE DIGITAR UN NUEVO CORREO");
         } else if (!customerData.existCustomer(id)) {
-            lblErrorEmail.setText("ERROR: NO EXISTE ESE CLIENTE");
+            showError("Error", "NO EXISTE ESE CLIENTE");
         } else if (customerData.existCustomerEmail(id, email)) {
-            lblErrorEmail.setText("ERROR: YA ESTA REGISTRADO ESE CORREO EN ESE CLIENTE");
+            showError("Error", "YA ESTA REGISTRADO ESE CORREO EN ESE CLIENTE");
         }else{
             customerData.addEmail(id, email);
-            lblErrorEmail.setText("CORREO AÑADIDO CON ÉXITO");
+            showSuccess("CORREO AÑADIDO CON ÉXITO");
         }
     }
     
@@ -647,16 +647,16 @@ public class CustomersController {
         String email = txtOldEmail.getText();
 
         if(id.isBlank() || id.isEmpty()){
-            lblErrorEmail.setText("ERROR: DEBE DIGITAR UN ID");
+            showError("Error", "DEBE DIGITAR UN ID");
         } else if (email.isEmpty() || email.isBlank()) {
-            lblErrorEmail.setText("ERROR: DEBE DIGITAR EL CORREO ACTUAL");
+            showError("Error", "DEBE DIGITAR EL CORREO ACTUAL");
         } else if (!customerData.existCustomer(id)) {
-            lblErrorEmail.setText("ERROR: NO EXISTE ESE CLIENTE");
+            showError("Error", "NO EXISTE ESE CLIENTE");
         } else if (!customerData.existCustomerEmail(id, email)) {
-            lblErrorEmail.setText("ERROR: ESE CLIENTE NO TIENE ESE CORREO REGISTRADO");
+            showError("Error", "ESE CLIENTE NO TIENE ESE CORREO REGISTRADO");
         }else{
             customerData.deleteEmail(id, email);
-            lblErrorEmail.setText("CORREO ELIMINADO CON ÉXITO");
+            showSuccess("CORREO ELIMINADO CON ÉXITO");
         }
     }
     
@@ -666,18 +666,18 @@ public class CustomersController {
         String oldEmail = txtOldEmail.getText();
 
         if(id.isBlank() || id.isEmpty()){
-            lblErrorEmail.setText("ERROR: DEBE DIGITAR UN ID");
+            showError("Error", "DEBE DIGITAR UN ID");
         } else if (oldEmail.isEmpty() || oldEmail.isBlank()) {
-            lblErrorEmail.setText("ERROR: DEBE DIGITAR EL CORREO ACTUAL");
+            showError("Error", "DEBE DIGITAR EL CORREO ACTUAL");
         } else if (newEmail.isBlank() || newEmail.isEmpty()) {
-            lblErrorEmail.setText("ERROR: DEBE DIGITAR EL CORREO NUEVO");
+            showError("Error", "DEBE DIGITAR EL CORREO NUEVO");
         } else if (!customerData.existCustomer(id)) {
-            lblErrorEmail.setText("ERROR: NO EXISTE ESE CLIENTE");
+            showError("Error", "NO EXISTE ESE CLIENTE");
         } else if (!customerData.existCustomerEmail(id, oldEmail)) {
-            lblErrorEmail.setText("ERROR: ESE CLIENTE NO TIENE ESE CORREO REGISTRADO");
+            showError("Error", "ESE CLIENTE NO TIENE ESE CORREO REGISTRADO");
         }else{
             customerData.updateModifyCustomerEmail(newEmail, id, oldEmail);
-            lblErrorEmail.setText("CORREO MODIFICADO CON ÉXITO");
+            showSuccess("CORREO MODIFICADO CON ÉXITO");
         }
     }
 
@@ -685,7 +685,7 @@ public class CustomersController {
         String district = comboboxDistrictQuestions.getValue();
 
         if(district == null){
-            lblErrorQuestions.setText("ERROR: DEBE SELECCIONAR UN DISTRITO");
+            showError("Error", "DEBE SELECCIONAR UN DISTRITO");
         }else{
             List<CustomerCompl> informationCustomer = customerData.searchCustomerDistrict(district);
             ObservableList<CustomerCompl> observableList = FXCollections.observableList(informationCustomer);
@@ -698,7 +698,7 @@ public class CustomersController {
         String type = comboboxTypeQuestions.getValue();
 
         if(type == null){
-            lblErrorQuestions.setText("ERROR: DEBE SELECCIONAR UN TIPO DE CLIENTE");
+            showError("Error", "DEBE SELECCIONAR UN TIPO DE CLIENTE");
         }else{
             List<CustomerCompl> informationCustomer = customerData.searchCustomersType(type);
             ObservableList<CustomerCompl> observableList = FXCollections.observableList(informationCustomer);
@@ -706,18 +706,33 @@ public class CustomersController {
         }
     }
 
-    void filterForTypeAndDistrict(){
+    void filterForTypeAndDistrict() {
         String type = comboboxTypeQuestions.getValue();
         String district = comboboxDistrictQuestions.getValue();
 
-        if(type == null){
-            lblErrorQuestions.setText("ERROR: DEBE SELECCIONAR UN TIPO DE CLIENTE");
+        if (type == null) {
+            showError("Error", "DEBE SELECCIONAR UN TIPO DE CLIENTE");
         } else if (district == null) {
-            lblErrorQuestions.setText("ERROR: DEBE SELECCIONAR UN DISTRITO");
-        } else{
+            showError("Error", "DEBE SELECCIONAR UN DISTRITO");
+        } else {
             List<CustomerCompl> informationCustomer = customerData.searchTypeDistrict(type, district);
             ObservableList<CustomerCompl> observableList = FXCollections.observableList(informationCustomer);
             tableviewQuestions.setItems(observableList);
         }
+    }
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showSuccess(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Éxito");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
